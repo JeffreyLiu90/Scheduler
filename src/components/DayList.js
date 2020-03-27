@@ -9,9 +9,7 @@ export default function DayList(props) {
   //Guesses - props because we do not have the data here, we are
   //passing it to the index.js which has it?
 
-  useEffect(() => {
-    console.log("props.days: ", props.days);
-  });
+  useEffect(() => {});
   return props.days.map((day, index) => (
     <DayListItem
       key={index}
