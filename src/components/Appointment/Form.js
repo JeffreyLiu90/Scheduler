@@ -3,6 +3,7 @@ import Button from "components/Button";
 import "./styles.scss";
 import InterviewerList from "components/InterviewerList";
 
+//The form component where you can edit or add appointment
 export default function Form(props) {
   const [name, setName] = useState(props.name || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
@@ -24,7 +25,7 @@ export default function Form(props) {
     reset();
     props.onCancel();
   };
-  console.log("from our form: ", props.interviewers);
+
   return (
     <main className="appointment__card appointment__card--create">
       <section className="appointment__card-left">
@@ -34,7 +35,6 @@ export default function Form(props) {
             name={name}
             type="text"
             placeholder="Enter Student Name"
-            // name={props.name}
             onChange={event => setName(event.target.value)}
             value={name}
             data-testid="student-name-input"

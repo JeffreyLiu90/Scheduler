@@ -1,5 +1,6 @@
 import React from "react";
 
+//Deleting... component once something has been deleted
 export default function Saving(props) {
   return (
     <main className="appointment__card appointment__card--status">

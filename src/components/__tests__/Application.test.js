@@ -5,7 +5,6 @@ import axios from "axios";
 import {
   render,
   getAllByTestId,
-  debug,
   getByAltText,
   queryByText,
   queryByAltText,
@@ -13,7 +12,6 @@ import {
   fireEvent,
   getByText,
   waitForElement,
-  prettyDOM,
   getByPlaceholderText
 } from "@testing-library/react";
 
@@ -180,24 +178,9 @@ describe("Application", () => {
     await waitForElement(() =>
       getByText(appointment, "Could not delete appointment")
     );
-    console.log(prettyDOM(appointment));
 
     expect(
       getByText(appointment, "Could not delete appointment")
     ).toBeInTheDocument();
   });
 });
-
-//1. Render the Application
-// const {container, debug} = render(<Application/>)
-
-// //2. Wait until the text "Archie Cohen" is displayed
-
-// await waitForElement(() => )
-//3. Click the Edit button on a Show appointment Form with Archie on it
-//4. Enter the Name "Lydia Miller-Jones" into the input with the placeholder of "Archie Cohen"
-//5. Click on the second interviewer in the list?
-//6. Click the "Save" button on the same appointment
-//7. check that the element with the text "Saving..." is displayed
-//8. Wait unitl the element with the text "Lydia Miller-Jones" is displayed
-//9. Check that the DayListItem with the text "Monday" still has "1 spot remaining"

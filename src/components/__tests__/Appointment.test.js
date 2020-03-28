@@ -8,7 +8,6 @@ afterEach(cleanup);
 
 describe("Appointment", () => {
   it("renders without crashing", () => {
-    console.log("works aye");
     render(<Appointment />);
   });
 });

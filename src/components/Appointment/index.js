@@ -6,44 +6,43 @@ import Show from "components/Appointment/Show";
 import Form from "components/Appointment/Form";
 import Saving from "components/Appointment/Saving";
 import Deleting from "components/Appointment/Deleting";
-import Status from "components/Appointment/Status";
-import Error from "components/Appointment/ErrorDeleting";
 import Confirm from "components/Appointment/Confirm";
 import useVisualMode from "hooks/useVisualMode";
-import InterviewerList from "components/InterviewerList";
-import InterviewerListItem from "components/InterviewerListItem";
 import ErrorDeleting from "components/Appointment/ErrorDeleting";
 import ErrorSaving from "components/Appointment/ErrorSaving";
 
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
 const CREATE = "CREATE";
-const STATUS = "STATUS";
 const SAVING = "SAVING";
 const DELETING = "DELETING";
-
 const EDIT = "EDIT";
 const CONFIRM = "CONFIRM";
 const ERRORSAVING = "ERRORSAVING";
 const ERRORDELETING = "ERRORDELETING";
-const ERROR_DELETE = "ERROR_DELETE";
+
 export default function Appointment(props) {
-  const { mode, setMode, transition, back } = useVisualMode(
+  const { mode, transition, back } = useVisualMode(
     props.interviewer ? SHOW : EMPTY
   );
 
+  //Save button function
   function save(name, interviewer) {
     const interview = {
       student: name,
       interviewer
     };
     transition(SAVING);
+    //props.id is the interview id
+    //interview is the interview object, i.e. { student: "Chad Takahashi", interviewer: 2 },
+
     props
       .bookInterview(props.id, interview)
       .then(() => transition(SHOW))
       .catch(error => transition(ERRORSAVING, true));
   }
 
+  //Delete button function
   function confirm(name, interviewer) {
     const interview = {
       student: name,
@@ -58,6 +57,7 @@ export default function Appointment(props) {
 
   const interviewers = props.interviewers ? props.interviewers : [];
 
+  //Different modes
   useEffect(() => {});
   return (
     <article className="appointment" data-testid="appointment">
@@ -98,24 +98,3 @@ export default function Appointment(props) {
     </article>
   );
 }
-
-//   if (props.interviewer) {
-//     return (
-//       <article className="appointment">
-//         <Header time={props.time} />
-//         <Show
-//           student={props.student}
-//           interviewer={props.interviewer}
-//           onEdit={props.onEdit}
-//           onDelete={props.onDelete}
-//         />
-//       </article>
-//     );
-//   }
-//   return (
-//     <article className="appointment">
-//       <Header time={props.time} />
-//       <Empty onClick={props.onAdd} />
-//     </article>
-//   );
-// }

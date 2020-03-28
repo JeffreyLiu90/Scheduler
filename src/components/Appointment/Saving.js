@@ -1,5 +1,6 @@
 import React from "react";
 
+//Saving pop up message once the save button has been clicked
 export default function Saving(props) {
   return (
     <main className="appointment__card appointment__card--status">

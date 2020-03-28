@@ -1,6 +1,6 @@
 import DayList from "components/DayList";
 import "components/Application.scss";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Appointment from "components/Appointment";
 
 import {
@@ -10,9 +10,8 @@ import {
 } from "helpers/selectors";
 import useApplicationData from "hooks/useApplicationData";
 
-//Set day???
 export default function Application(props) {
-  // const [day, setDay] = useState([]);
+  //import state and functions from UseApplication.js
   const {
     state,
     setDay,
@@ -20,7 +19,6 @@ export default function Application(props) {
     cancelInterview
   } = useApplicationData();
 
-  // // getAppointmentsForDay(state, state.day);
   const functionArray = getAppointmentsForDay(state, state.day);
   const appointments = Object.values(functionArray);
   const interviewers = getInterviewersForDay(state, state.day);
@@ -88,6 +86,3 @@ export default function Application(props) {
     </main>
   );
 }
-//L:123 - days = state.days = setting the days based on api request
-//setDay handler- when going into daylist item, lets you modify day individually
-//prop drilling- drill down all the way to daylist item with these props

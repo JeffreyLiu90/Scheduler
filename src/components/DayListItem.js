@@ -10,21 +10,13 @@ const formatSpots = spots => {
   } else return spots + " spots remaining";
 };
 
+//function for the daylist nav like spots remaining, selected day, etc.
 export default function DayListItem(props) {
   const DayClass = classnames("day-list__item", {
     "day-list__item--selected": props.selected,
     "day-list__item--full": props.spots === 0
   });
 
-  //   return (
-  //     <li onClick={() => props.setDay(props.name)}>
-  //       <h2 classname={dayClass}>{props.name}</h2>
-  //       <h3 classname={dayClass}>{props.spots}</h3>
-  //     </li>
-  //   );
-  // }
-
-  //props.name - just the name of the day
   return (
     <li
       className={DayClass}
